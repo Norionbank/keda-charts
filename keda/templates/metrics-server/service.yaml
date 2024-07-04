@@ -4,7 +4,7 @@ metadata:
   labels:
     app.kubernetes.io/name: {{ .Values.operator.name }}-metrics-apiserver
     app: {{ .Values.operator.name }}-metrics-apiserver
-    {{- include "keda.labels" . | indent 4 }}
+    {{- include "keda.labels" . | trim | nindent 4 }}
   name: {{ .Values.operator.name }}-metrics-apiserver
   namespace: {{ .Release.Namespace }}
   {{- if or .Values.additionalAnnotations .Values.service.annotations (and .Values.prometheus.metricServer.enabled ( not (or .Values.prometheus.metricServer.podMonitor.enabled .Values.prometheus.metricServer.serviceMonitor.enabled )))}}

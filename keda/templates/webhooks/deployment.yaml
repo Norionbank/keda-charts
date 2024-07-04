@@ -12,7 +12,7 @@ metadata:
     app: {{ .Values.webhooks.name }}
     name: {{ .Values.webhooks.name }}
     app.kubernetes.io/name: {{ .Values.webhooks.name }}
-    {{- include "keda.labels" . | indent 4 }}
+    {{- include "keda.labels" . | trim | nindent 4 }}
 spec:
   revisionHistoryLimit: {{ .Values.webhooks.revisionHistoryLimit}}
   replicas: {{ .Values.webhooks.replicaCount}}
@@ -29,7 +29,7 @@ spec:
         app: {{ .Values.webhooks.name }}
         name: {{ .Values.webhooks.name }}
         app.kubernetes.io/name: {{ .Values.webhooks.name }}
-        {{- include "keda.labels" . | indent 8 }}
+        {{- include "keda.labels" . | trim | nindent 8 }}
         {{- if .Values.podLabels.webhooks }}
         {{- toYaml .Values.podLabels.webhooks | nindent 8 }}
         {{- end }}

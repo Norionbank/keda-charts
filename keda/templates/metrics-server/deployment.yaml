@@ -10,7 +10,7 @@ metadata:
   labels:
     app: {{ .Values.operator.name }}-metrics-apiserver
     app.kubernetes.io/name: {{ .Values.operator.name }}-metrics-apiserver
-    {{- include "keda.labels" . | indent 4 }}
+    {{- include "keda.labels" . | trim | nindent 4 }}
 spec:
   revisionHistoryLimit: {{ .Values.metricsServer.revisionHistoryLimit}}
   replicas: {{ .Values.metricsServer.replicaCount }}
@@ -26,7 +26,7 @@ spec:
       labels:
         app: {{ .Values.operator.name }}-metrics-apiserver
         app.kubernetes.io/name: {{ .Values.operator.name }}-metrics-apiserver
-        {{- include "keda.labels" . | indent 8 }}
+        {{- include "keda.labels" . | trim | nindent 8 }}
         {{- if .Values.podIdentity.activeDirectory.identity }}
         aadpodidbinding: {{ .Values.podIdentity.activeDirectory.identity }}
         {{- end }}

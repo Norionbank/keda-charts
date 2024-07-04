@@ -21,7 +21,7 @@ metadata:
   {{- end }}
   labels:
     app.kubernetes.io/name: {{ .Values.operator.name }}
-    {{- include "keda.labels" . | indent 4 }}
+    {{- include "keda.labels" . | trim | nindent 4 }}
   name: {{ .Values.operator.name }}
   namespace: {{ .Release.Namespace }}
 spec:

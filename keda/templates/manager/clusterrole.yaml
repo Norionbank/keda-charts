@@ -8,7 +8,7 @@ metadata:
   {{- end }}
   labels:
     app.kubernetes.io/name: {{ .Values.operator.name }}
-    {{- include "keda.labels" . | indent 4 }}
+    {{- include "keda.labels" . | trim | nindent 4 }}
   name: {{ .Values.operator.name }}
 rules:
 - apiGroups:
@@ -33,7 +33,7 @@ rules:
 {{- if not .Values.permissions.operator.restrict.secret }}
 - apiGroups:
   - ""
-  resources:    
+  resources:
   - secrets
   verbs:
   - list
@@ -130,7 +130,7 @@ metadata:
     rbac.authorization.k8s.io/aggregate-to-admin: "true"
     rbac.authorization.k8s.io/aggregate-to-edit: "true"
     app.kubernetes.io/name: {{ .Values.operator.name }}
-    {{- include "keda.labels" . | indent 4 }}
+    {{- include "keda.labels" . | trim | nindent 4 }}
 rules:
 - apiGroups:
   - keda.sh
@@ -163,7 +163,7 @@ metadata:
     rbac.authorization.k8s.io/aggregate-to-edit: "true"
     rbac.authorization.k8s.io/aggregate-to-view: "true"
     app.kubernetes.io/name: {{ .Values.operator.name }}
-    {{- include "keda.labels" . | indent 4 }}
+    {{- include "keda.labels" . | trim | nindent 4 }}
 rules:
 - apiGroups:
   - keda.sh

@@ -11,7 +11,7 @@ metadata:
   labels:
     app: {{ .Values.operator.name }}-metrics-apiserver
     app.kubernetes.io/name: {{ .Values.operator.name }}-metrics-apiserver
-    {{- include "keda.labels" . | indent 4 }}
+    {{- include "keda.labels" . | trim | nindent 4 }}
 spec:
   endpointSelector:
     matchLabels:

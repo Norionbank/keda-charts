@@ -8,7 +8,7 @@ metadata:
   {{- end }}
   labels:
     app.kubernetes.io/name: {{ .Values.operator.name }}-certs
-    {{- include "keda.labels" . | indent 4 }}
+    {{- include "keda.labels" . | trim | nindent 4 }}
   name: {{ .Values.operator.name }}-certs
   namespace: {{ .Release.Namespace }}
 rules:
@@ -45,7 +45,7 @@ metadata:
   {{- end }}
   labels:
     app.kubernetes.io/name: {{ .Values.operator.name }}-certs
-    {{- include "keda.labels" . | indent 4 }}
+    {{- include "keda.labels" . | trim | nindent 4 }}
   name: {{ .Values.operator.name }}-certs
   namespace: {{ .Release.Namespace }}
 roleRef:
@@ -66,7 +66,7 @@ metadata:
   {{- end }}
   labels:
     app.kubernetes.io/name: {{ .Values.operator.name }}-minimal-cluster-role
-    {{- include "keda.labels" . | indent 4 }}
+    {{- include "keda.labels" . | trim | nindent 4 }}
   name: {{ .Values.operator.name }}-minimal-cluster-role
 rules:
 - apiGroups:
@@ -108,7 +108,7 @@ metadata:
   {{- end }}
   labels:
     app.kubernetes.io/name: {{ .Values.operator.name }}-minimal
-    {{- include "keda.labels" . | indent 4 }}
+    {{- include "keda.labels" . | trim | nindent 4 }}
   name: {{ .Values.operator.name }}-minimal
 roleRef:
   apiGroup: rbac.authorization.k8s.io

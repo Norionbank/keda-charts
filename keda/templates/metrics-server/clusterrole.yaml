@@ -8,7 +8,7 @@ metadata:
   {{- end }}
   labels:
     app.kubernetes.io/name: {{ .Values.operator.name }}-external-metrics-reader
-    {{- include "keda.labels" . | indent 4 }}
+    {{- include "keda.labels" . | trim | nindent 4 }}
   name: {{ .Values.operator.name }}-external-metrics-reader
 rules:
 - apiGroups:
